@@ -1,0 +1,56 @@
+GET http://localhost:3000/user-api/users
+
+###
+POST http://localhost:3000/user-api/users
+Content-Type: application/json
+{
+    "id": 100,
+    "name": "subhash",
+    "age": 21
+}
+
+### read user by id
+GET http://localhost:3000/user-api/users/100  ###only post and get method has the body and not get request so we can get the data from url itself
+
+###
+PUT http://localhost:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id": 100,
+    "name": "subhash kumar",
+    "age": 20
+}
+
+###
+DELETE http://localhost:3000/user-api/users/100
+
+/----------------------------------------------
+
+###
+GET http://localhost:3000/prod-api/products
+
+###
+POST http://localhost:3000/prod-api/products
+Content-Type: application/json
+
+{
+    "id": 300,
+    "name": "laptop",
+    "price": 50000
+}
+
+### get product by id
+GET http://localhost:3000/prod-api/products/300
+
+###
+PUT http://localhost:3000/prod-api/products/300
+Content-Type: application/json
+{
+    "id": 300,
+    "name": "lenovo laptop",
+    "price": 55000
+}
+
+###
+DELETE http://localhost:3000/prod-api/products/300
