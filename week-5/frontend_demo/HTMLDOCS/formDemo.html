@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Form demo</title>
+</head>
+<body>
+    <h1>form demo</h1>
+
+    <form >
+        <div>
+            <label for="username">username</label>
+            <input type="text" name="username" id="username" required minlength="4" placeholder="username">
+        </div>
+        <div>
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" required placeholder="password">
+        </div>
+        <div>
+            <label for="email">email</label>
+            <input type="email" name="email" id="email" placeholder="email">
+        </div>
+        <div>
+            <label for="DOB">DOB</label>
+            <input type="date" name="DOB" id="DOB" placeholder="DOB">
+        </div>
+
+        <!-- skills -->
+         <div>
+            <!-- skill1 -->
+             <div>
+                
+                <input type="checkbox" name="html" id="html">
+                <label for="html">HTML</label>
+             </div>
+             <!-- skill2 -->
+             <div>
+                
+                <input type="checkbox" name="react" id="react">
+                <label for="react">React</label>
+             </div>
+         </div>
+
+         <!-- gender -->
+          <div>
+            <!-- male -->
+             <div>
+                <input type="radio" name="gender" id="gender">
+                <label for="gender">male</label>
+             </div>
+
+             <!-- female -->
+             <div>
+                <input type="radio" name="gender" id="gender">
+                <label for="gender">female</label>
+             </div>
+          </div>
+
+          <!-- states -->
+           <div>
+                <label for="states">Select the state</label>
+                <select name="states" id="states">
+                    <option value="tg">telengana</option>
+                    <option value="tn">tamil nadu</option>
+                    <option value="raj">Rajasthan</option>
+                </select>
+           </div>
+
+        <!-- submit button -->
+
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+</body>
+</html>
