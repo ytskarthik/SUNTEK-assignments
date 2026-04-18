@@ -1,37 +1,97 @@
-import { NavLink } from "react-router"
+import { NavLink, useNavigate } from "react-router";
+import { useAuth } from "../store/authStore";
+import {
+  navbarClass,
+  navContainerClass,
+  navBrandClass,
+  navLinksClass,
+  navLinkClass,
+  navLinkActiveClass,
+} from "../styles/common";
 
 function Header() {
-  return (
-    <div className="flex justify-between px-10 py-5 bg-gray-500 items-center">
-        <img className="rounded-full " width="80px" src="https://thumbs.dreamstime.com/b/creative-simple-dragons-silhouettes-logo-stylized-vector-illustrations-simple-dragons-silhouettes-logo-130475058.jpg" alt="" />
-        <ul className="flex gap-5 text-2xl">
-        
-            <li>
-               <NavLink to="" className={({ isActive }) => (isActive ? "bg-blue-500 text-lime-50 rounded-xl p-2 shadow" : "")}>
-            Home
-          </NavLink>
-            </li>
-        <li>
-          <NavLink
-            to="/adduser"
-            className={({ isActive }) => (isActive ? "bg-blue-500 text-lime-50 rounded-2xl p-2" : "")}
-          >
-            AddUser
-          </NavLink>
-        </li>
+  const isAuthenticated = useAuth((state) => state.isAuthenticated);
+  const user = useAuth((state) => state.currentUser);
+  const logout = useAuth((state) => state.logout);
 
-        <li>
-          <NavLink
-            to="/userslist"
-            className={({ isActive }) => (isActive ? "bg-blue-500 text-lime-50 rounded-2xl p-2" : "")}
-          >
-            UsersList
-          </NavLink>
-        </li>
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
+  // decide profile route based on role
+  const getProfilePath = () => {
+    if (!user) return "/";
+
+   // console.log("current user", user);
+    switch (user.role) {
+      case "AUTHOR":
+        return "/author-profile";
+      case "ADMIN":
+        return "/admin-profile";
+      default:
+        return "/user-profile";
+    }
+  };
+
+  return (
+    <nav className={navbarClass}>
+      <div className={navContainerClass}>
+        {/* Logo */}
+        <NavLink to="/" className={navBrandClass}>
+          MyBlog
+        </NavLink>
+
+        <ul className={navLinksClass}>
+          {/* Always visible */}
+          <li>
+            <NavLink to="/" end className={({ isActive }) => (isActive ? navLinkActiveClass : navLinkClass)}>
+              Home
+            </NavLink>
+          </li>
+
+          {/* Not logged in */}
+          {!isAuthenticated && (
+            <>
+              <li>
+                <NavLink to="/register" className={({ isActive }) => (isActive ? navLinkActiveClass : navLinkClass)}>
+                  Register
+                </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/login" className={({ isActive }) => (isActive ? navLinkActiveClass : navLinkClass)}>
+                  Login
+                </NavLink>
+              </li>
+            </>
+          )}
+
+          {/* Logged in */}
+          {isAuthenticated && (
+            <>
+              <li>
+                <NavLink
+                  to={getProfilePath()}
+                  className={({ isActive }) => (isActive ? navLinkActiveClass : navLinkClass)}
+                >
+                  Profile
+                </NavLink>
+              </li>
+
+              <li>
+                <button className={navLinkClass} onClick={handleLogout}>
+                  Logout
+                </button>
+              </li>
+            </>
+          )}
         </ul>
-        </div>
-    
-  )
+      </div>
+    </nav>
+  );
 }
 
-export default Header
+export default Header;
