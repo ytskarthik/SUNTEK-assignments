@@ -10,10 +10,7 @@ const app=exp();
 //add body parser middleware
 app.use (exp.json())
 //add cors middleware
-app.use(cors({
-    origin:"http://localhost:5173",
-    methods:["GET","POST","DELETE","PUT","PATCH"]
-}))
+app.use(cors())
 //forward req
 app.use("/user-api",UserApp)
 

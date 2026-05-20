@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router";
 import { useState } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
 function AddUser() {
     const {register,
         handleSubmit ,
@@ -17,7 +18,7 @@ function AddUser() {
         setLoading(true)
         //make api call to create user
         try{
-            let res=await fetch("http://localhost:5000/user-api/users",{
+          let res=await fetch(`${API_BASE_URL}/user-api/users`,{
                 method:"POST",
                 headers:{
                     "Content-Type":"application/json"

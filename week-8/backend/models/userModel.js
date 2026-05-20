@@ -12,7 +12,7 @@ const userSchema=new Schema({
         required:[true,"email is required"],
         unique:[true,"email already exists"]
     },
-    dateOfBirth:{
+    dateOfBirth:{   
         type:Date,
         required:[true,"Date of birth is required"]
     },
