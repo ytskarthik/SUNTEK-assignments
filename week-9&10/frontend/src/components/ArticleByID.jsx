@@ -44,7 +44,7 @@ function ArticleByID() {
       if (!article) setLoading(true);
 
       try {
-        const res = await axios.get(`http://localhost:4000/common-api/articles/${id}`, { withCredentials: true });
+        const res = await axios.get(`http://localhost:5000/common-api/articles/${id}`, { withCredentials: true });
 
         setArticle(res.data.payload);
       } catch (err) {
@@ -74,7 +74,7 @@ function ArticleByID() {
 
     try {
       const res = await axios.patch(
-        `http://localhost:4000/author-api/articles/${id}/status`,
+        `http://localhost:5000/author-api/articles/${id}/status`,
         { isArticleActive: newStatus },
         { withCredentials: true },
       );
@@ -110,7 +110,7 @@ function ArticleByID() {
         articleId: article._id,
         comment: commentObj.comment,
       };
-      const res = await axios.put("http://localhost:4000/user-api/articles", payload, { withCredentials: true });
+      const res = await axios.put("http://localhost:5000/user-api/articles", payload, { withCredentials: true });
       if (res.status === 200) {
         toast.success(res.data.message);
         setArticle(res.data.payload);

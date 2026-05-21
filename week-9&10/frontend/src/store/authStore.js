@@ -20,7 +20,7 @@ export const useAuth = create((set) => ({
       //set loading true
       set({ loading: true, error: null });
       //make api call
-      let res = await axios.post("http://localhost:4000/common-api/login", userCredObj, { withCredentials: true });
+      let res = await axios.post("http://localhost:5000/common-api/login", userCredObj, { withCredentials: true });
       // console.log("res is ", res);
       //update state
       set({
@@ -29,13 +29,14 @@ export const useAuth = create((set) => ({
         currentUser: normalizeUser(res.data.payload), //{message:"",payload:}
       });
     } catch (err) {
-      console.log("err is ", err);
+      console.log("err is ", err?.response?.data || err);
+      const serverErr = err.response?.data;
+      const msg = serverErr?.message || serverErr?.description || serverErr?.error || "Login failed";
       set({
         loading: false,
         isAuthenticated: false,
         currentUser: null,
-        //error: err,
-        error: err.response?.data?.error || "Login failed",
+        error: msg,
       });
     }
   },
@@ -44,7 +45,7 @@ export const useAuth = create((set) => ({
       //set loading state
       set({ loading: true, error: null });
       //make logout api req
-      await axios.get("http://localhost:4000/common-api/logout", { withCredentials: true });
+      await axios.get("http://localhost:5000/common-api/logout", { withCredentials: true });
       //update state
       set({
         loading: false,
@@ -64,7 +65,7 @@ export const useAuth = create((set) => ({
   checkAuth: async () => {
     try {
       set({ loading: true });
-      const res = await axios.get("http://localhost:4000/common-api/check-auth", { withCredentials: true });
+      const res = await axios.get("http://localhost:5000/common-api/check-auth", { withCredentials: true });
 
       set({
         currentUser: normalizeUser(res.data.payload),

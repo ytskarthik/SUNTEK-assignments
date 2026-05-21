@@ -1,13 +1,13 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import { UserTypeModel } from "../models/UserModel.js";
+import { UserModel } from "../models/UserModel.js";
 import {config} from 'dotenv'
 config()
 
 //register function
 export const register = async (userObj) => {
   //Create document
-  const userDoc = new UserTypeModel(userObj);
+  const userDoc = new UserModel(userObj);
   //validate for emprty passwords
   await userDoc.validate();
   //hash and replace plain password
@@ -25,7 +25,7 @@ export const register = async (userObj) => {
 //authenticate function
 export const authenticate = async ({ email, password }) => {
     //check user with email & role
-  const user = await UserTypeModel.findOne({ email });
+  const user = await UserModel.findOne({ email });
   if (!user) {
     const err = new Error("Invalid email");
     err.status = 401;

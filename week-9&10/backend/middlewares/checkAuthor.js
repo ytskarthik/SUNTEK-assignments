@@ -1,10 +1,10 @@
-import { UserTypeModel } from "../models/UserModel.js";
+import { UserModel } from "../models/UserModel.js";
 
 export const checkAuthor = async (req, res, next) => {
   //get author id
   let aid = req.body?.author || req.params?.authorId;
   //verify author
-  let author = await UserTypeModel.findById(aid);
+  let author = await UserModel.findById(aid);
   //if author not found
   if (!author ) {
     return res.status(401).json({ message: "Invalid Author" });

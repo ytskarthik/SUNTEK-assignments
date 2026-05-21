@@ -1,23 +1,36 @@
 import mongoose from "mongoose";
 import { Schema,model } from "mongoose";
 //create a user schema with validations
-//name,email,dob,mobile number
 const userSchema=new Schema({
-    name:{
+    firstName:{
         type:String,
-        required:[true,"Name is required"]
+        required:[true,"First name is required"]
+    },
+    lastName:{
+        type:String,
+        required:[true,"Last name is required"]
     },
     email:{
         type:String,
         required:[true,"email is required"],
         unique:[true,"email already exists"]
     },
-    dateOfBirth:{
-        type:Date,
-        required:[true,"Date of birth is required"]
+    password:{
+        type:String,
+        required:[true,"Password is required"]
     },
-    mobileNumber:{
-        type:Number,
+    profileImageUrl:{
+        type:String,
+        default:null
+    },
+    role:{
+        type:String,
+        enum:["USER","AUTHOR","ADMIN"],
+        default:"USER"
+    },
+    isActive:{
+        type:Boolean,
+        default:true
     },
     //for soft delete
     status:{
@@ -30,4 +43,4 @@ const userSchema=new Schema({
         strict:"throw",
     },)
 //create user model for userschema'
-export const UserModel=model("user",userSchema)
+export const UserModel = mongoose.models.users || model("users",userSchema)

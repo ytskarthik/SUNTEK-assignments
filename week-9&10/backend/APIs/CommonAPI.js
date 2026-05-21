@@ -1,6 +1,6 @@
 import exp from "express";
 import { authenticate } from "../services/authService.js";
-import { UserTypeModel } from "../models/UserModel.js";
+import { UserModel } from "../models/UserModel.js";
 import { ArticleModel } from "../models/ArticleModel.js";
 import bcrypt from "bcryptjs";
 import { verifyToken } from "../middlewares/verifyToken.js";
@@ -44,7 +44,7 @@ commonRouter.put("/change-password", async (req, res) => {
   }
 
   // Find user by email (works for USER, AUTHOR, ADMIN — all same collection)
-  const account = await UserTypeModel.findOne({ email });
+  const account = await UserModel.findOne({ email });
   if (!account) {
     return res.status(404).json({ message: "Account not found" });
   }
@@ -92,4 +92,15 @@ commonRouter.get("/articles/:id", verifyToken("USER", "AUTHOR", "ADMIN"), async 
   }
 
   res.status(200).json({ message: "article", payload: article });
+});
+
+// Read all active articles (for USER/AUTHOR/ADMIN)
+commonRouter.get("/articles", verifyToken("USER", "AUTHOR", "ADMIN"), async (req, res) => {
+  try {
+    const articles = await ArticleModel.find({ isArticleActive: true }).populate("author", "firstName email");
+    res.status(200).json({ message: "articles", payload: articles });
+  } catch (err) {
+    console.error("Error fetching articles:", err);
+    res.status(500).json({ message: "error fetching articles", error: err.message });
+  }
 });

@@ -31,7 +31,7 @@ function WriteArticle() {
 
     try {
       await axios.post(
-        "http://localhost:4000/author-api/articles",
+        "http://localhost:5000/author-api/articles",
         articleObj,
         { withCredentials: true }
       );

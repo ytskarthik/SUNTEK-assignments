@@ -38,13 +38,15 @@ function Register() {
     Object.keys(userObj).forEach((key) => {
       formData.append(key, userObj[key]);
     });
-    // add profilePic to Formdata object
-    formData.append("profileImageUrl", profileImageUrl[0]);
+    // add profilePic to Formdata object (only if a file was selected)
+    if (profileImageUrl && profileImageUrl.length > 0) {
+      formData.append("profileImageUrl", profileImageUrl[0]);
+    }
     //add image to formData objecte
     try {
       if (role === "user") {
         //make API req to user-api
-        let resObj = await axios.post("http://localhost:4000/user-api/users", formData);
+        let resObj = await axios.post("http://localhost:5000/user-api/users", formData);
         if (resObj.status === 201) {
           //navigate to login
           navigate("/login");
@@ -53,7 +55,7 @@ function Register() {
       if (role === "author") {
         //make API req to author-api
         //make API req to user-api
-        let resObj = await axios.post("http://localhost:4000/author-api/users", formData);
+        let resObj = await axios.post("http://localhost:5000/author-api/users", formData);
         console.log("res obj is ", resObj);
         if (resObj.status === 201) {
           //navigate to login
@@ -62,7 +64,9 @@ function Register() {
       }
     } catch (err) {
       // console.log("err is ", err);
-      setError(err.response?.data?.error || "Registration failed");
+      const errorMsg = err.response?.data?.description || err.response?.data?.message || err.response?.data?.error || "Registration failed";
+      console.error("Registration error details:", err.response?.data);
+      setError(errorMsg);
     } finally {
       setLoading(false);
     }

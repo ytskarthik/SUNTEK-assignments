@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { Schema, model } from "mongoose";
 
 //Create user comment schema
@@ -5,7 +6,7 @@ const userCommentSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
-      ref: "user",
+      ref: "users",
       required: [true, "Comment user is required"],
     },
     comment: {
@@ -26,7 +27,7 @@ const articleSchema = new Schema(
   {
     author: {
       type: Schema.Types.ObjectId,
-      ref: "user",
+      ref: "users",
       required: [true, "Author ID required"],
     },
     title: {
@@ -55,4 +56,4 @@ const articleSchema = new Schema(
 );
 
 //Create article model
-export const ArticleModel = model("article", articleSchema);
+export const ArticleModel = mongoose.models.article || model("article", articleSchema);
