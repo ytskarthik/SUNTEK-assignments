@@ -38,13 +38,22 @@ app.use("/common-api",commonRouter)
 
 
 //connect to db
+function getMongoUri() {
+  return process.env.DB_URL || process.env.MONGODB_URI || process.env.MONGO_URI;
+}
+
 async function connectDB() {
     try {
-    if (!process.env.DB_URL) {
-      throw new Error("Missing DB_URL in .env");
+    const mongoUri = getMongoUri();
+    if (!mongoUri) {
+      throw new Error("Missing MongoDB connection string. Set DB_URL, MONGODB_URI, or MONGO_URI.");
     }
 
-    await connect(process.env.DB_URL);
+    if (process.env.NODE_ENV === "production" && /localhost|127\.0\.0\.1/i.test(mongoUri)) {
+      throw new Error("Production MongoDB URI is pointing to localhost. Set DB_URL or MONGODB_URI to a hosted MongoDB Atlas connection string.");
+    }
+
+    await connect(mongoUri);
         console.log("connected to db successfully")
         
         //assign port

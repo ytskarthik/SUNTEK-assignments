@@ -26,3 +26,13 @@
 10. Registration & Login in common for USER & AUTHOR. Create a seperate service to reuse
 
 11. The Client wont send role. It just redirects to a specific API based on role selection. The hardcoded role assigned by API routes.
+
+### Deployment note
+
+Set a hosted MongoDB connection string in one of these environment variables before running in production:
+
+- `DB_URL`
+- `MONGODB_URI`
+- `MONGO_URI`
+
+Do not point the production service at `localhost:27017`.
