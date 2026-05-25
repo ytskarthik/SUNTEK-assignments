@@ -11,7 +11,7 @@
     npm install -y
 
 5) create an express application
-    npm install express 
+    npm install express
 
 6) connect to data base(create maongoose)
     npm install mongoose

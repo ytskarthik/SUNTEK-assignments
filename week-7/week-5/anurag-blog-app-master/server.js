@@ -21,9 +21,6 @@ app.use("/author-api", authorRoute);
 app.use("/admin-api", adminRoute);
 app.use("/common-api", commonRouter);
 
-
-
-
 //connect to db
 const connectDB = async () => {
   try {
