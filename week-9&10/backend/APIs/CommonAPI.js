@@ -22,7 +22,7 @@ commonRouter.post("/login", async (req, res) => {
   //save tokan as httpOnly cookie
   res.cookie("token", token, authCookieOptions);
   //send res
-  res.status(200).json({ message: "login success", payload: user });
+  res.status(200).json({ message: "login success", token, payload: user });
 });
 
 //logout for User, Author and Admin
