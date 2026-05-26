@@ -16,6 +16,7 @@ import { NavLink } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router";
+import { API_BASE } from "../config/api";
 
 function Register() {
   const { register, handleSubmit } = useForm();
@@ -46,7 +47,7 @@ function Register() {
     try {
       if (role === "user") {
         //make API req to user-api
-        let resObj = await axios.post("http://localhost:5000/user-api/users", formData);
+        let resObj = await axios.post(`${API_BASE}/user-api/users`, formData);
         if (resObj.status === 201) {
           //navigate to login
           navigate("/login");
@@ -55,7 +56,7 @@ function Register() {
       if (role === "author") {
         //make API req to author-api
         //make API req to user-api
-        let resObj = await axios.post("http://localhost:5000/author-api/users", formData);
+        let resObj = await axios.post(`${API_BASE}/author-api/users`, formData);
         console.log("res obj is ", resObj);
         if (resObj.status === 201) {
           //navigate to login
