@@ -11,16 +11,22 @@ const app=exp();
 //add body parser middleware
 app.use (exp.json())
 //add cors middleware
+const allowedFrontend = process.env.FRONTEND_URL; // can be comma-separated
 app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("Not allowed by CORS"));
-        }
-    },
-    methods:["GET","POST","DELETE","PUT","PATCH"],
-    credentials: true
+  origin: function (origin, callback) {
+    // allow server-to-server or tools with no origin
+    if (!origin) return callback(null, true);
+    // allow local development
+    if (/^http:\/\/localhost:\d+$/.test(origin)) return callback(null, true);
+    // allow single or comma-separated allowed frontends from env
+    if (allowedFrontend) {
+      const allowed = allowedFrontend.split(',').map(s => s.trim()).filter(Boolean);
+      if (allowed.includes(origin)) return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
+  methods:["GET","POST","DELETE","PUT","PATCH"],
+  credentials: true
 }))
 
   // parse cookies
