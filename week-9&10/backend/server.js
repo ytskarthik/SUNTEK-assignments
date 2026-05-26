@@ -49,6 +49,10 @@ function getMongoUri() {
   return process.env.DB_URL || process.env.MONGODB_URI || process.env.MONGO_URI;
 }
 
+app.get('/', (req, res)=>{
+  console.log("em ledhu ikkada dolla");
+})
+
 async function connectDB() {
     try {
     const mongoUri = getMongoUri();
