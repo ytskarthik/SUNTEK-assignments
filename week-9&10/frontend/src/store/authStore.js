@@ -2,6 +2,11 @@ import { create } from "zustand";
 import axios from "axios";
 import { API_BASE } from "../config/api";
 
+const storedToken = localStorage.getItem("token");
+if (storedToken) {
+  axios.defaults.headers.common.Authorization = `Bearer ${storedToken}`;
+}
+
 const normalizeUser = (user) => {
   if (!user) return null;
   return {
@@ -22,6 +27,11 @@ export const useAuth = create((set) => ({
       set({ loading: true, error: null });
       //make api call
       let res = await axios.post(`${API_BASE}/common-api/login`, userCredObj, { withCredentials: true });
+      const token = res.data.token;
+      if (token) {
+        localStorage.setItem("token", token);
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+      }
       // console.log("res is ", res);
       //update state
       set({
@@ -47,6 +57,8 @@ export const useAuth = create((set) => ({
       set({ loading: true, error: null });
       //make logout api req
       await axios.get(`${API_BASE}/common-api/logout`, { withCredentials: true });
+      localStorage.removeItem("token");
+      delete axios.defaults.headers.common.Authorization;
       //update state
       set({
         loading: false,
