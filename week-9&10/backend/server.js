@@ -11,7 +11,8 @@ const app=exp();
 //add body parser middleware
 app.use (exp.json())
 //add cors middleware
-const allowedFrontend = process.env.FRONTEND_URL; // can be comma-separated
+const defaultFrontendUrl = "https://suntek-assignments-week-9-10-capsto-chi.vercel.app";
+const allowedFrontend = process.env.FRONTEND_URL || defaultFrontendUrl; // can be comma-separated
 app.use(cors({
   origin: function (origin, callback) {
     // allow server-to-server or tools with no origin

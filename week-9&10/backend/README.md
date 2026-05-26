@@ -35,4 +35,8 @@ Set a hosted MongoDB connection string in one of these environment variables bef
 - `MONGODB_URI`
 - `MONGO_URI`
 
+Set your deployed frontend URL in `FRONTEND_URL` so CORS allows the browser app:
+
+- `https://suntek-assignments-week-9-10-capsto-chi.vercel.app`
+
 Do not point the production service at `localhost:27017`.
