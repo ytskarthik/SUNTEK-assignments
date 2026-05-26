@@ -50,7 +50,7 @@ function getMongoUri() {
 }
 
 app.get('/', (req, res)=>{
-  res.json({
+  res.send({
     message: "Nothing to see here"
   })
 })
