@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { API_BASE } from "../config/api";
 
 import {
   articleGrid,
@@ -29,7 +30,7 @@ function UserProfile() {
     const getArticles = async () => {
       setLoading(true);
       try {
-        const res = await axios.get("http://localhost:5000/common-api/articles", { withCredentials: true });
+        const res = await axios.get(`${API_BASE}/common-api/articles`, { withCredentials: true });
 
         setArticles(res.data.payload);
       } catch (err) {
