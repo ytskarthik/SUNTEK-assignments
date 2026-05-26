@@ -50,7 +50,9 @@ function getMongoUri() {
 }
 
 app.get('/', (req, res)=>{
-  console.log("em ledhu ikkada dolla");
+  res.json({
+    message: "Nothing to see here"
+  })
 })
 
 async function connectDB() {
