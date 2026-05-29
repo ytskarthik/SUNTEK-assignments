@@ -1,0 +1,33 @@
+###create user
+POST http://localhost:5000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"subhash",
+    "email":"subhash@gmail.com",
+    "dateOfBirth":"2004-03-14",
+    "mobileNumber":"1234567890"
+}
+
+###read all users
+GET http://localhost:5000/user-api/users
+
+###read user by id
+GET http://localhost:5000/user-api/users/69a694a3eb4565c9907a5786
+
+###update user by id
+PUT http://localhost:5000/user-api/users/69a694a3eb4565c9907a5786
+Content-Type: application/json
+
+{
+    "name":"Subhash Kumar",
+    "email":"subhashK@gmail.com",
+    "dateOfBirth":"2004-03-14",
+    "mobileNumber":"6302181675"
+}
+
+###delete user by id
+DELETE http://localhost:5000/user-api/users/69a694a3eb4565c9907a5786
+
+###activate user by id
+PATCH  http://localhost:5000/user-api/users/69a694a3eb4565c9907a5786

@@ -1,0 +1,700 @@
+/* Reset Styles */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* ============================================
+   HERO SECTION - Main Landing Area
+   ============================================ */
+.div1{
+    background-image: url('https://imgs.search.brave.com/Y4oQMZekcg6u9LDl7tzpzOVyttoxN_woLzz4u7_OkJ0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly92YXN0/cGhvdG9zLmNvbS9m/aWxlcy91cGxvYWRz/L3Bob3Rvcy8xMjE4/OC9ncmFuZC10ZXRv/bi1uYXRpb25hbC1w/YXJrLW0uanBnP3Y9/MjAyNTA1MDUwOTAy/Mjg');
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.div1 h1 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.4;
+}
+
+.div1 button{
+    text-decoration: none;
+    background-color: rgb(255, 135, 6);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.div1 button:hover {
+    background-color: rgb(255, 155, 30);
+    transform: scale(1.05);
+}
+
+/* ============================================
+   CONTENT SECTION - Main Tourism Info
+   ============================================ */
+.div2{
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+}
+
+.div2 section{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Navigation buttons container */
+.nav-container {
+  display: flex;
+  gap: 15px;
+  padding: 20px;
+  position: relative;
+  bottom: 50px;
+  justify-content: flex-start;
+}
+
+/* Base button styling for image navigation */
+.nav-btn {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1.5px solid #5a93b5;
+  background-color: transparent;
+  color: #5a93b5;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+  outline: none;
+}
+
+.nav-btn:hover {
+  background-color: #5a93b5;
+  color: white;
+  transform: scale(1.05);
+}
+
+.nav-btn:active {
+  transform: scale(0.95);
+}
+
+/* Image section styling */
+.d2s2{
+    background-color: rgb(112, 113, 114);
+    width: 100%;
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.d2s2 img{
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+}
+
+/* Main content text section */
+.d2s1{
+    padding: 50px;
+    background-color: #f5f5f5;
+    flex: 1;
+}
+
+/* ============================================
+   TOURISM TYPES GRID SECTION
+   ============================================ */
+.div3{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 40px 20px;
+    gap: 40px;
+}
+
+.div3 h1{
+    width: 100%;
+    text-align: center;
+    font-size: 3.5rem;
+    color: blue;
+    margin-bottom: 40px;
+}
+
+/* Tourism grid layout */
+.div3-grid{
+    width: 100%;
+    min-height: 500px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 15px;
+    flex: 1;
+}
+
+/* Hiking category */
+.child1{
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-color: rgb(255, 115, 0);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.child1:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.child1 img {
+  position: relative;
+  left:300px;
+}
+
+/* Rafting category */
+.child2{
+    grid-column: 2/3;
+    grid-row: 1/2;
+    background-color: aqua;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.child2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Winter Hiking category */
+.child3{
+    grid-column: 3/4;
+    grid-row: 1/2;
+    background-color: rgb(59, 255, 25);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.child3:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Food Expeditions category */
+.child4{
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: rgb(48, 37, 255);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.child4:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Others category */
+.child5{
+    grid-column: 2/3;
+    grid-row: 2/3;
+    background-color: rgb(255, 50, 245);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.child5:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* Image sizing for all categories */
+.child1 img,
+.child2 img,
+.child3 img,
+.child4 img,
+.child5 img{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.child1 h4,
+.child2 h4,
+.child3 h4,
+.child4 h4,
+.child5 h4 {
+    font-size: 1.3rem;
+    color: #333;
+    text-transform: capitalize;
+}
+
+/* ============================================
+   FOOTER NAVIGATION SECTION
+   ============================================ */
+.div4{
+    color: blue;
+    text-align: center;
+    padding: 40px 20px;
+    background-color: #f5f5f5;
+}
+
+.div4 h1 {
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.div4 ul{
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    padding: 20px;
+    list-style-type: none;
+    flex-wrap: wrap;
+}
+
+.div4 ul li{
+    text-decoration: none;
+}
+
+.div4 ul li a{
+    text-decoration: none;
+    color: blue;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.div4 ul li a:hover {
+    color: darkblue;
+    background-color: #e0e0e0;
+    text-decoration: underline;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN - MEDIA QUERIES
+   ============================================ */
+
+/* Laptop View (1025px and above) - Default styles above this */
+
+/* Tablet View (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    .div1 {
+        height: 250px;
+    }
+    
+    .div1 h1 {
+        font-size: 2rem;
+        padding: 0 20px;
+    }
+    
+    .div1 button {
+        padding: 10px 18px;
+        font-size: 0.95rem;
+    }
+    
+    .div2 {
+        flex-direction: column;
+    }
+    
+    .div2 section {
+        min-width: 100%;
+    }
+    
+    .d2s1 {
+        padding: 30px;
+        background-color: #f5f5f5;
+    }
+    
+    .d2s1 h1 {
+        font-size: 2.2rem !important;
+        width: 100% !important;
+    }
+    
+    .d2s1 p {
+        font-size: 0.95rem;
+    }
+    
+    .d2s2 {
+        padding: 30px;
+        min-height: 300px;
+    }
+    
+    .d2s2 img {
+        max-width: 100%;
+        width: 80%;
+        height: auto;
+    }
+    
+    .nav-container {
+        bottom: 20px;
+    }
+    
+    .div3 {
+        flex-direction: column;
+        padding: 30px 15px;
+    }
+    
+    .div3 h1 {
+        font-size: 2.8rem !important;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    .div3-grid {
+        width: 100%;
+        min-height: auto;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    
+    .child1 {
+        grid-column: 1/2;
+    }
+    
+    .child2 {
+        grid-column: 2/3;
+    }
+    
+    .child3 {
+        grid-column: 1/2;
+    }
+    
+    .child4 {
+        grid-column: 2/3;
+    }
+    
+    .child5 {
+        grid-column: 1/3;
+    }
+    
+    .child1 img,
+    .child2 img,
+    .child3 img,
+    .child4 img,
+    .child5 img {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .div4 {
+        padding: 30px 15px;
+    }
+    
+    .div4 h1 {
+        font-size: 2.2rem !important;
+        padding: 0 20px;
+    }
+    
+    .div4 ul {
+        gap: 25px;
+    }
+}
+
+/* Mobile View (480px - 767px) */
+@media screen and (max-width: 767px) {
+    .div1 {
+        height: 200px;
+        padding: 15px;
+    }
+    
+    .div1 h1 {
+        font-size: 1.3rem;
+        padding: 0 10px;
+    }
+    
+    .div1 button {
+        padding: 8px 15px;
+        font-size: 0.85rem;
+    }
+    
+    .div2 {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .div2 section {
+        min-width: 100%;
+    }
+    
+    .d2s1 {
+        padding: 20px;
+        background-color: #f5f5f5;
+        order: 2;
+    }
+    
+    .d2s1 h1 {
+        font-size: 1.6rem !important;
+        width: 100% !important;
+    }
+    
+    .d2s1 p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .d2s2 {
+        padding: 15px;
+        background-color: rgb(112, 113, 114);
+        order: 1;
+        min-height: auto;
+    }
+    
+    .d2s2 img {
+        max-width: 100%;
+        width: 70%;
+        height: auto;
+    }
+    
+    .nav-container {
+        bottom: 15px;
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .nav-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+    
+    .div3 {
+        flex-direction: column;
+        padding: 15px;
+    }
+    
+    .div3 h1 {
+        font-size: 1.8rem !important;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .div3-grid {
+        width: 100%;
+        min-height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 10px;
+    }
+    
+    .child1,
+    .child2,
+    .child3,
+    .child4,
+    .child5 {
+        grid-column: 1 !important;
+        grid-row: auto !important;
+        padding: 15px;
+    }
+    
+    .child1 img,
+    .child2 img,
+    .child3 img,
+    .child4 img,
+    .child5 img {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .child1 h4,
+    .child2 h4,
+    .child3 h4,
+    .child4 h4,
+    .child5 h4 {
+        font-size: 1rem;
+    }
+    
+    .div4 {
+        padding: 20px 10px;
+        background-color: #f5f5f5;
+    }
+    
+    .div4 h1 {
+        font-size: 1.5rem !important;
+        padding: 15px 10px;
+    }
+    
+    .div4 ul {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+    
+    .div4 ul li a {
+        display: block;
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+}
+
+/* Extra Small Mobile (up to 479px) */
+@media screen and (max-width: 479px) {
+    .div1 {
+        height: 180px;
+        padding: 10px;
+    }
+    
+    .div1 h1 {
+        font-size: 1rem;
+        padding: 0 5px;
+    }
+    
+    .div1 button {
+        padding: 6px 12px;
+        font-size: 0.75rem;
+    }
+    
+    .div2 {
+        flex-direction: column;
+    }
+    
+    .d2s1 {
+        padding: 12px;
+    }
+    
+    .d2s1 h1 {
+        font-size: 1.2rem !important;
+    }
+    
+    .d2s1 p {
+        font-size: 0.75rem;
+    }
+    
+    .d2s2 {
+        padding: 10px;
+    }
+    
+    .d2s2 img {
+        width: 60%;
+    }
+    
+    .nav-container {
+        bottom: 10px;
+        padding: 5px;
+        gap: 5px;
+    }
+    
+    .nav-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .div3 {
+        padding: 10px;
+    }
+    
+    .div3 h1 {
+        font-size: 1.3rem !important;
+        margin-bottom: 15px;
+    }
+    
+    .div3-grid {
+        gap: 8px;
+    }
+    
+    .child1,
+    .child2,
+    .child3,
+    .child4,
+    .child5 {
+        padding: 10px;
+    }
+    
+    .child1 img,
+    .child2 img,
+    .child3 img,
+    .child4 img,
+    .child5 img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .child1 h4,
+    .child2 h4,
+    .child3 h4,
+    .child4 h4,
+    .child5 h4 {
+        font-size: 0.85rem;
+    }
+    
+    .div4 {
+        padding: 15px 8px;
+    }
+    
+    .div4 h1 {
+        font-size: 1.2rem !important;
+        padding: 10px 5px;
+    }
+    
+    .div4 ul {
+        gap: 8px;
+        padding: 8px;
+    }
+    
+    .div4 ul li a {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
