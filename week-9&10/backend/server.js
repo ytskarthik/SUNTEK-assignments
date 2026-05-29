@@ -11,23 +11,16 @@ const app=exp();
 //add body parser middleware
 app.use (exp.json())
 //add cors middleware
-const defaultFrontendUrl = "https://suntek-assignments-week-9-10-capsto-chi.vercel.app";
-const allowedFrontend = process.env.FRONTEND_URL || defaultFrontendUrl; // can be comma-separated
 app.use(cors({
-  origin: function (origin, callback) {
-    // allow server-to-server or tools with no origin
-    if (!origin) return callback(null, true);
-    // allow local development
-    if (/^http:\/\/localhost:\d+$/.test(origin)) return callback(null, true);
-    // allow single or comma-separated allowed frontends from env
-    if (allowedFrontend) {
-      const allowed = allowedFrontend.split(',').map(s => s.trim()).filter(Boolean);
-      if (allowed.includes(origin)) return callback(null, true);
-    }
-    return callback(new Error("Not allowed by CORS"));
-  },
-  methods:["GET","POST","DELETE","PUT","PATCH"],
-  credentials: true
+    origin: function (origin, callback) {
+        if (!origin || /^http:\/\/localhost:\d+$/.test(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    methods:["GET","POST","DELETE","PUT","PATCH"],
+    credentials: true
 }))
 
   // parse cookies
@@ -45,28 +38,13 @@ app.use("/common-api",commonRouter)
 
 
 //connect to db
-function getMongoUri() {
-  return process.env.DB_URL || process.env.MONGODB_URI || process.env.MONGO_URI;
-}
-
-app.get('/', (req, res)=>{
-  res.send({
-    message: "Nothing to see here"
-  })
-})
-
 async function connectDB() {
     try {
-    const mongoUri = getMongoUri();
-    if (!mongoUri) {
-      throw new Error("Missing MongoDB connection string. Set DB_URL, MONGODB_URI, or MONGO_URI.");
+    if (!process.env.DB_URL) {
+      throw new Error("Missing DB_URL in .env");
     }
 
-    if (process.env.NODE_ENV === "production" && /localhost|127\.0\.0\.1/i.test(mongoUri)) {
-      throw new Error("Production MongoDB URI is pointing to localhost. Set DB_URL or MONGODB_URI to a hosted MongoDB Atlas connection string.");
-    }
-
-    await connect(mongoUri);
+    await connect(process.env.DB_URL);
         console.log("connected to db successfully")
         
         //assign port

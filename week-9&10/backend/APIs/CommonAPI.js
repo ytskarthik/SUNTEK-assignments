@@ -6,13 +6,6 @@ import bcrypt from "bcryptjs";
 import { verifyToken } from "../middlewares/verifyToken.js";
 export const commonRouter = exp.Router();
 
-const isProduction = process.env.NODE_ENV === "production";
-const authCookieOptions = {
-  httpOnly: true,
-  sameSite: isProduction ? "none" : "lax",
-  secure: isProduction,
-};
-
 //login
 commonRouter.post("/login", async (req, res) => {
   //get user cred object
@@ -20,15 +13,23 @@ commonRouter.post("/login", async (req, res) => {
   //call authenticate service
   let { token, user } = await authenticate(userCred);
   //save tokan as httpOnly cookie
-  res.cookie("token", token, authCookieOptions);
+  res.cookie("token", token, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: false,
+  });
   //send res
-  res.status(200).json({ message: "login success", token, payload: user });
+  res.status(200).json({ message: "login success", payload: user });
 });
 
 //logout for User, Author and Admin
 commonRouter.get("/logout", (req, res) => {
   // Clear the cookie named 'token'
-  res.clearCookie("token", authCookieOptions);
+  res.clearCookie("token", {
+    httpOnly: true, // Must match original  settings
+    secure: false, // Must match original  settings
+    sameSite: "lax", // Must match original  settings
+  });
 
   res.status(200).json({ message: "Logged out successfully" });
 });
