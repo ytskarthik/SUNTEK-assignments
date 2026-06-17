@@ -1,0 +1,59 @@
+GET http://localhost:4000/user-api/users
+
+### Read user by object id 
+GET http://localhost:4000/user-api/users/697dbc3d50a191a58fbfeb7b
+
+
+### post request
+POST http://localhost:4000/user-api/users
+Content-Type: application/json
+
+{
+    "username":"suman",
+    "password":"suman",
+    "age":21
+}
+
+### updating an user by id
+PUT http://localhost:4000/user-api/users/697dbc3d50a191a58fbfeb7b
+Content-Type: application/json
+
+{
+    "username":"summan",
+    "password":"summan",
+    "age": 22
+}
+
+### Delete
+DELETE http://localhost:4000/user-api/users/697dbc3d50a191a58fbfeb7b
+
+### Product API testing 
+
+POST http://localhost:4000/product-api/products
+Content-Type: application/json
+
+{
+    "pid":2,
+    "productName":"jks",
+    "price":20000
+}
+
+###
+
+GET http://localhost:4000/product-api/products
+
+### get with id
+GET http://localhost:4000/product-api/products/697dcd9ca32db2a22b9f835b
+
+### update with id
+PUT http://localhost:4000/product-api/products/697dcd9ca32db2a22b9f835b
+Content-Type: application/json
+
+{
+    "pid":1,
+    "productName":"TVSs",
+    "price":20000
+}
+
+### now let's try using pid
+GET http://localhost:4000/product-api/products/pid/1
